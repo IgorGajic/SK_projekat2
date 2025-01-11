@@ -1,0 +1,30 @@
+package com.example.komponente_spring.mapper;
+
+import com.example.komponente_spring.domain.Notification;
+import com.example.komponente_spring.dto.NotificationDto;
+import org.springframework.stereotype.Component;
+
+import java.sql.Date;
+
+@Component
+public class NotificationMapper {
+    public NotificationMapper() {}
+
+    public Notification getNotificationFromNotificationDto(NotificationDto notificationDto) {
+        Notification notification = new Notification();
+        notification.setRecipient(notificationDto.getRecipient());
+        notification.setNotificationType(notificationDto.getNotificationType());
+        notification.setMessage(notificationDto.getMessage());
+        notification.setSentAt(notificationDto.getSentAt());
+        return notification;
+    }
+
+    public NotificationDto getNotificationDtoFromNotification(Notification notification) {
+        NotificationDto notificationDto = new NotificationDto();
+        notificationDto.setRecipient(notification.getRecipient());
+        notificationDto.setNotificationType(notification.getNotificationType());
+        notificationDto.setMessage(notification.getMessage());
+        notificationDto.setSentAt(notification.getSentAt());
+        return notificationDto;
+    }
+}

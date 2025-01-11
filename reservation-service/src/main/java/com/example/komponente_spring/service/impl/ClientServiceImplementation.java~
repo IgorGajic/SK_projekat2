@@ -1,0 +1,27 @@
+package com.example.komponente_spring.service.impl;
+
+import com.example.komponente_spring.dto.ClientDto;
+import com.example.komponente_spring.mapper.UserMapper;
+import com.example.komponente_spring.repository.ClientRepository;
+import com.example.komponente_spring.service.ClientService;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Service
+public class ClientServiceImplementation implements ClientService {
+    private ClientRepository clientRepository;
+    private UserMapper userMapper;
+
+    public ClientServiceImplementation(ClientRepository clientRepository, UserMapper userMapper) {
+        this.clientRepository = clientRepository;
+        this.userMapper = userMapper;
+    }
+
+    @Override
+    public List<ClientDto> findAll() {
+        return clientRepository.findAll().stream()
+                .map(client -> (ClientDto)userMapper.getUserDtoFromUserDomain(client))
+                .collect(Collectors.toList());
+    }}

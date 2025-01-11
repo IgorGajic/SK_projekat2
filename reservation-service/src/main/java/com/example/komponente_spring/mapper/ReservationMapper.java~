@@ -1,0 +1,26 @@
+package com.example.komponente_spring.mapper;
+
+import com.example.komponente_spring.domain.Reservation;
+import com.example.komponente_spring.dto.ReservationDto;
+import org.springframework.stereotype.Component;
+
+@Component
+public class ReservationMapper {
+    public ReservationMapper() {}
+
+    public Reservation getReservationFromReservationDto(ReservationDto reservationDto) {
+        Reservation reservation = new Reservation();
+        reservation.setStatus(reservationDto.getStatus());
+        reservation.setClientId(reservationDto.getClientId());
+        reservation.setReservationSlot( new ReservationSlotMapper().getReservationSlotFromReservationSlotDto(reservationDto.getReservationSlot()));
+        return reservation;
+    }
+
+    public ReservationDto getReservationDtoFromReservation(Reservation reservation) {
+        ReservationDto reservationDto = new ReservationDto();
+        reservationDto.setStatus(reservation.getStatus());
+        reservationDto.setClientId(reservation.getClientId());
+        reservationDto.setReservationSlot(new ReservationSlotMapper().getReservationSlotDtoFromReservationSlot(reservation.getReservationSlot()));
+        return reservationDto;
+    }
+}

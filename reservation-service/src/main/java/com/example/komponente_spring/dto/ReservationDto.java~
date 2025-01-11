@@ -1,0 +1,42 @@
+package com.example.komponente_spring.dto;
+
+import com.example.komponente_spring.domain.Status;
+
+public class ReservationDto {
+    private Long clientId;
+    private ReservationSlotDto reservationSlot;
+    private Status status;
+
+    public ReservationDto() {
+    }
+
+    public ReservationDto(Long clientId, ReservationSlotDto reservationSlot, Status status) {
+        this.clientId = clientId;
+        this.reservationSlot = reservationSlot;
+        this.status = status;
+    }
+
+    public Long getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(Long clientId) {
+        this.clientId = clientId;
+    }
+
+    public ReservationSlotDto getReservationSlot() {
+        return reservationSlot;
+    }
+
+    public void setReservationSlot(ReservationSlotDto reservationSlot) {
+        this.reservationSlot = reservationSlot;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+}
