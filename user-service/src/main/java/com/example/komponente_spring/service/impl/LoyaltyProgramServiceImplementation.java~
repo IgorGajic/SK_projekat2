@@ -1,0 +1,38 @@
+package com.example.komponente_spring.service.impl;
+
+import com.example.komponente_spring.dto.LoyaltyProgramDto;
+import com.example.komponente_spring.repository.LoyaltyProgramRepository;
+import com.example.komponente_spring.service.LoyaltyProgramService;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class LoyaltyProgramServiceImplementation implements LoyaltyProgramService {
+    private LoyaltyProgramRepository loyaltyProgramRepository;
+
+    @Override
+    public List<LoyaltyProgramDto> findAll() {
+        return List.of();
+    }
+
+    @Override
+    public LoyaltyProgramDto findAllById(Long id) {
+        return null;
+    }
+
+    @Override
+    public LoyaltyProgramDto create(LoyaltyProgramDto loyaltyProgramDto) {
+        return null;
+    }
+
+    @Override
+    public LoyaltyProgramDto update(Long id, LoyaltyProgramDto loyaltyProgramDto) {
+        return null;
+    }
+
+    @Override
+    public void delete(Long id) {
+
+    }
+}
