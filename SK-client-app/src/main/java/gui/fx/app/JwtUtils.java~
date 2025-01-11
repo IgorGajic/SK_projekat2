@@ -1,0 +1,4 @@
+package gui.fx.app;
+
+public class JwtUtils {
+}

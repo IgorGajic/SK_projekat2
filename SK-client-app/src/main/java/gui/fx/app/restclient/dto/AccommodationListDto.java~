@@ -1,0 +1,25 @@
+package gui.fx.app.restclient.dto;
+
+import java.util.ArrayList;
+
+import java.util.List;
+
+public class RestaurantSlotListDto {
+
+	private List<RestaurantSlotDto> content = new ArrayList<>();
+
+	public RestaurantSlotListDto(List<RestaurantSlotDto> content) {
+		this.content = content;
+	}
+
+	public RestaurantSlotListDto() {
+	}
+
+	public List<RestaurantSlotDto> getContent() {
+		return content;
+	}
+
+	public void setContent(List<RestaurantSlotDto> content) {
+		this.content = content;
+	}
+}
