@@ -1,6 +1,7 @@
 package gui.fx.app.view;
 
 import gui.fx.app.controller.BlockController;
+import gui.fx.app.controller.LogoutController;
 import gui.fx.app.controller.UnblockController;
 import gui.fx.app.restclient.UserServiceRestClient;
 import gui.fx.app.restclient.dto.UserDto;
@@ -21,6 +22,7 @@ public class AdminView extends VBox {
     private TableView<UserDto>  userTable;
     private UserServiceRestClient userServiceRestClient;
 
+    private Button logoutBtn;
     private Button blockBtn;
     private Button unblockBtn;
 
@@ -45,10 +47,11 @@ public class AdminView extends VBox {
     private void addListeners() {
         blockBtn.setOnAction(new BlockController(this));
         unblockBtn.setOnAction(new UnblockController(this));
+        logoutBtn.setOnAction(new LogoutController());
     }
 
     private void addElements() {
-        this.getChildren().addAll(userTable, blockBtn, unblockBtn);
+        this.getChildren().addAll(userTable, blockBtn, unblockBtn, logoutBtn);
         this.setSpacing(10);
         this.setAlignment(Pos.CENTER);
     }
@@ -56,6 +59,7 @@ public class AdminView extends VBox {
     private void initViewElements() {
         blockBtn = new Button("Block user");
         unblockBtn = new Button("Unblock user");
+        logoutBtn = new Button("Logout");
 
         userDtos = FXCollections.observableArrayList();
         userTable = new TableView<>(userDtos);

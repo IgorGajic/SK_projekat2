@@ -112,9 +112,10 @@ public class ReservationServiceRestClient {
         if (response.code() >= 200 && response.code() <= 300) {
             String json = response.body().string();
 
-            return objectMapper.readValue(json, List.class);
+            return objectMapper.readValue(json, new TypeReference<List<ReservationDto>>() {});
         }
 
-        throw new RuntimeException();
+        throw new RuntimeException("Failed to fetch reservations, HTTP code: " + response.code());
     }
+
 }

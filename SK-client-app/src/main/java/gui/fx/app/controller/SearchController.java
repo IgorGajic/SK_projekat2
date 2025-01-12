@@ -30,9 +30,7 @@ public class SearchController implements EventHandler<ActionEvent> {
                     reservationView.getTfTo().getText());
 
             reservationView.getReservationSlotList().addAll(reservationSlotListDto);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
+        } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
         }
     }

@@ -1,5 +1,6 @@
 package gui.fx.app.view;
 
+import gui.fx.app.controller.LogoutController;
 import gui.fx.app.controller.ReservationController;
 import gui.fx.app.controller.SearchController;
 import gui.fx.app.restclient.ReservationServiceRestClient;
@@ -28,6 +29,7 @@ public class ReservationView extends VBox {
     private TextField tfTo;
     private Button btnSearch;
     private Button btnReserve;
+    private Button btnLogout;
 
     private ObservableList<ReservationSlotDto> reservationSlotList;
     private TableView<ReservationSlotDto>  tableReservation;
@@ -55,10 +57,11 @@ public class ReservationView extends VBox {
     private void addListeners() {
         btnSearch.setOnAction(new SearchController(this));
         btnReserve.setOnAction(new ReservationController(this));
+        btnLogout.setOnAction(new LogoutController());
     }
 
     private void addElements() {
-        this.hBoxFilers.getChildren().addAll(lblRestaurant, tfRestaurant, lblFrom, tfFrom, lblTo, tfTo, btnSearch);
+        this.hBoxFilers.getChildren().addAll(lblRestaurant, tfRestaurant, lblFrom, tfFrom, lblTo, tfTo, btnSearch, btnLogout);
         this.getChildren().addAll(hBoxFilers, tableReservation, btnReserve, lblReservation, userReservationtable);
         this.setSpacing(10);
         this.setAlignment(Pos.CENTER);
@@ -75,6 +78,7 @@ public class ReservationView extends VBox {
         tfTo = new TextField();
         btnSearch = new Button("Search");
         btnReserve = new Button("Reserve");
+        btnLogout = new Button("Logout");
         reservationSlotList = FXCollections.observableArrayList();
         tableReservation = new TableView<>(reservationSlotList);
         reservationList = FXCollections.observableArrayList();
@@ -224,5 +228,13 @@ public class ReservationView extends VBox {
 
     public void setReservationServiceRestClient(ReservationServiceRestClient reservationServiceRestClient) {
         this.reservationServiceRestClient = reservationServiceRestClient;
+    }
+
+    public Button getBtnLogout() {
+        return btnLogout;
+    }
+
+    public void setBtnLogout(Button btnLogout) {
+        this.btnLogout = btnLogout;
     }
 }
